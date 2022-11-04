@@ -1,0 +1,24 @@
+html{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+body{
+    width: 1900px; 
+    height: 800px;
+    margin: 0;
+}
+
+p{
+   color: black;
+   margin:0;
+   font-size: x-large;
+}
+
+b{
+    font-size: x-large;
+}
+
+
+a{
+    font-size: x-large;
+}
