@@ -2,12 +2,12 @@
 // (A) INIT PHP FLOW
 require __DIR__ . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
 $config = new \Flow\Config();
-$config->setTempDir("C:\Users\young\Desktop\uploads&temp" . DIRECTORY_SEPARATOR . "temp");
+$config->setTempDir("~/Desktop/uploads&temp" . DIRECTORY_SEPARATOR . "temp");
 $request = new \Flow\Request();
 
 // (B) HANDLE UPLOAD
-$uploadFolder = "C:/Users/young/Desktop/uploads&temp" . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
-$uploadFileName = uniqid() . "_" . $request->getFileName();
+$uploadFolder = "~/Desktop/uploads&temp" . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
+$uploadFileName = uniqid() . ":\Users\young\_" . $request->getFileName();
 $uploadPath = $uploadFolder . $uploadFileName;
 if (\Flow\Basic::save($uploadPath, $config, $request)) {
   // File saved successfully
