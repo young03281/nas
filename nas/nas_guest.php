@@ -21,7 +21,7 @@
     
     
 
-    <input type="button" id="upbrowse" style="height:50px; width:100px" value="選擇上傳檔案" onclick="javascript:x+1"/>
+    <input type="button" id="upbrowse" style="height:50px; width:100px" value="選擇上傳檔案"/>
     <input type="button" id="upToggle" style="height:50px; width:100px" value="暫停/開始"/>
     <div id="uplist"></div>
     
@@ -101,14 +101,14 @@
 
 
     <?php
-    $path = "../../uploads&temp/uploads";
+    $path = "../../uploadstemp/uploads";
     $files = scandir("$path");
      echo "<b>nas上有:</b>";
     for ($a = 2; $a < count($files); $a++)
     {
         ?>
         <p>
-            <?php echo '</b>'.substr($files[$a], 14).'</b>'; ?>
+            <?php echo '</b>'.substr($files[$a], 13).'</b>'; ?>
             <a href="download.php?nama=<?php echo $path ?>/<?php echo $files[$a]; ?>">
             Download
             </a>

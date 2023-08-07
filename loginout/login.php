@@ -13,7 +13,7 @@ $password=$_POST["password"];
 $password_hash=password_hash($password,PASSWORD_DEFAULT);
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $sql = "SELECT * FROM user WHERE username ='".$username."'";
+    $sql = "SELECT * FROM users WHERE username ='".$username."'";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
     if(mysqli_num_rows($result)==1 && $password==$row["password"]){

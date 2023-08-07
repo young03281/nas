@@ -5,9 +5,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $username=$_POST["username"];
     $password=$_POST["password"];
     //檢查帳號是否重複
-    $check="SELECT * FROM user WHERE username='".$username."'";
+    $check="SELECT * FROM users WHERE username='".$username."'";
     if(mysqli_num_rows(mysqli_query($conn,$check))==0){
-        $sql="INSERT INTO user (id,username, password,file_num)
+        $sql="INSERT INTO users (id,username, password,file_num)
             VALUES(NULL,'".$username."','".$password."', 0)";
         
         if(mysqli_query($conn, $sql)){

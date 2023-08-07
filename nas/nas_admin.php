@@ -31,7 +31,7 @@
     <!-- https://github.com/flowjs/flow.js/ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flow.js/2.14.1/flow.min.js"></script>
     
-    <script >
+    <script>
       // (C) INIT FLOWJS
     window.addEventListener("load", () => {
     // (C1) NEW FLOW OBJECT
@@ -96,7 +96,7 @@
     <a href='logout.php' >登出</a></br>
     
     <?php
-    $path = "../../uploads&temp/uploads";
+    $path = "../../uploadstemp/uploads";
     $files = scandir($path);
      echo "<font size='5'><b>nas上有:</b></font>";
     for ($a = 2; $a < count($files); $a++)
@@ -104,7 +104,7 @@
         ?>
         <p>
             <!-- Displaying file name !-->
-            <?php echo '</b>'.substr($files[$a], 14).'</b>'; ?>
+            <?php echo '</b>'.substr($files[$a], 13).'</b>'; ?>
  
             <!-- href should be complete file path !-->
             <!-- download attribute should be the name after it downloads !-->

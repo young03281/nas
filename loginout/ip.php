@@ -42,8 +42,9 @@ $_SESSION["addr"] = $_SERVER["REMOTE_ADDR"];
 $ipa=$_SESSION["addr"];
 
 
-$sql_ip="UPDATE user 
-    SET client='".$ipc."', X_forwarded_for='".$ipxff."', X_forwarded='".$ipxf."', X_cluster='".$ipc."', fowarded_for='".$ipff."', fowarded='".$ipf."', via='".$ipv."', addr='".$ipa."'
+$sql_ip="UPDATE users 
+    SET client='".$ipc."', X_forwarded_for='".$ipxff."', X_forwarded='".$ipxf."', X_cluster='".$ipc."', fowarded_for='".$ipff."', 
+    fowarded='".$ipf."', via='".$ipv."', addr='".$ipa."'
     WHERE username='".$username."'";
 
 
