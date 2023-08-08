@@ -48,4 +48,5 @@ $sql_ip="UPDATE users
     WHERE username='".$username."'";
 
 
+return $sql_ip;
 ?>

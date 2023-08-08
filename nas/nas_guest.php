@@ -8,11 +8,9 @@
   $_SESSION["id"]=$id;
   $t=$_SESSION["file_num"];
   $_SESSION["file_num"]=$t;
-  echo $t;
-  echo $_SESSION["file_num"];
   $conn=require_once "../loginout/config.php";
   $sql_file="UPDATE users SET file_num='".$t."' WHERE username='".$username."'";
-  mysqli_query($conn, $sql_file);
+  $conn ->query($sql_file);
   if($t >= 10){
     header("Location:./nas_over10.php?file_num=".$_SESSION["file_num"]);
   }

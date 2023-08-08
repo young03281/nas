@@ -4,7 +4,7 @@ $conn=require_once "config.php";
 
 session_start();
 
-require 'ip.php';
+$ip = require_once 'ip.php';
 
 // Define variables and initialize with empty values
 $username=$_POST["username"];
@@ -14,16 +14,17 @@ $password_hash=password_hash($password,PASSWORD_DEFAULT);
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql = "SELECT * FROM users WHERE username ='".$username."'";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result)==1 && $password==$row["password"]){
+    $result = $conn->query($sql);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    $rownum = $result ->rowCount();
+    if($rownum==1 && $password==$row["password"]){
         // Store data in session variables
         $_SESSION["loggedin"] = true;
         //這些是之後可以用到的變數
         $_SESSION["id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
         $_SESSION["file_num"] = $row["file_num"];
-        mysqli_query($conn,$sql_ip);
+       $conn->query($ip);
         header("location: ../index.php");
     }
     else{

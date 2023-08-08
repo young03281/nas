@@ -11,7 +11,7 @@ if ($t != $x){
     $_SESSION["file_num"] = $t;
     $conn=require_once "../loginout/config.php";
     $sql_file="UPDATE users SET file_num='".$t."' WHERE username='".$username."'";
-    mysqli_query($conn, $sql_file);
+    $conn->query($sql_file);
     $_SESSION["file_num"] = $t;
     echo $t;
     echo $_SESSION["file_num"];
