@@ -8,6 +8,7 @@
 
   <head>
       <link rel="stylesheet" href="style.css?v=<?=time()?>" type="text/css">
+      <link rel="icon" href="favicon.png" type="image/png">
     <title>nas</title>
   </head>
   
