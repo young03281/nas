@@ -110,7 +110,7 @@
             <!-- href should be complete file path !-->
             <!-- download attribute should be the name after it downloads !-->
             
-              <a href="download.php?nama=<?php echo $path ?>/<?php echo $files[$a]; ?>">
+              <a href="download.php?path=<?php echo $path ?>/<?php echo $files[$a]; ?>">
                 Download
               </a>
               <a href="delete.php?name=<?php echo $path ?>/<?php echo $files[$a]; ?>", t -= 1 style="color: red;" >

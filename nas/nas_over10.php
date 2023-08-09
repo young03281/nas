@@ -29,7 +29,7 @@
  
             <!-- href should be complete file path !-->
             <!-- download attribute should be the name after it downloads !-->
-            <a href="uploads/<?php echo $files[$a]; ?>" download="<?php echo $files[$a]; ?>">
+            <a href="download.php?path=<?php echo $files[$a]; ?>" download="<?php echo $files[$a]; ?>">
             Download
             </a>
         </p>
