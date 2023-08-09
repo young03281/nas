@@ -6,30 +6,31 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $password=$_POST["password"];
     //檢查帳號是否重複
     $check="SELECT * FROM users WHERE username='".$username."'";
-    if(mysqli_num_rows(mysqli_query($conn,$check))==0){
+    $result = $conn ->query($check);
+    if($result ->rowCount()==0){
         $sql="INSERT INTO users (id,username, password,file_num)
             VALUES(NULL,'".$username."','".$password."', 0)";
         
-        if(mysqli_query($conn, $sql)){
+        if($conn ->query($sql)){
             echo "註冊成功!3秒後將自動跳轉頁面<br>";
             echo "<a href='../index.php'>未成功跳轉頁面請點擊此</a>";
             header("refresh:3;url=../index.php");
             exit;
         }else{
-            echo "Error creating table: " . mysqli_error($conn);
+            echo "Error creating table: " . $conn ->errorInfo();
         }
     }
     else{
         echo "該帳號已有人使用!<br>3秒後將自動跳轉頁面<br>";
         echo "<a href='register.html'>未成功跳轉頁面請點擊此</a>";
         header('HTTP/1.0 302 Found');
-        header("refresh:3;url=register.html",true);
+        header("refresh:3;url=register.php",true);
         exit;
     }
 }
 
 
-mysqli_close($conn);
+$conn = null;
 
 function function_alert($message) { 
       
