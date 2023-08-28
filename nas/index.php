@@ -4,6 +4,11 @@
   session_start();
   $username=$_SESSION["username"];
   $_SESSION["username"]=$username;
+  if ($username == null){
+    echo "<script>alert('還敢偷來啊冰鳥');
+      window.location.href='../';
+     </script>"; 
+  }
   $id=$_SESSION["id"];
   $_SESSION["id"]=$id;
   $t=$_SESSION["file_num"];
