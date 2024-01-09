@@ -2,11 +2,11 @@
 // (A) INIT PHP FLOW
 require __DIR__ . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php";
 $config = new \Flow\Config();
-$config->setTempDir("C:\\Users\\young\\Desktop\\vscode_workspace\\\uploadstemp" . DIRECTORY_SEPARATOR . "temp");
+$config->setTempDir("C:\\Users\\young\\Desktop\\code\\\uploadstemp" . DIRECTORY_SEPARATOR . "temp");
 $request = new \Flow\Request();
 
 // (B) HANDLE UPLOAD
-$uploadFolder = "C:\\Users\\young\\Desktop\\vscode_workspace\\uploadstemp" . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
+$uploadFolder = "C:\\Users\\young\\Desktop\\code\\uploadstemp" . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
 $uploadFileName = uniqid() . $request->getFileName();
 $uploadPath = $uploadFolder . $uploadFileName;
 if (\Flow\Basic::save($uploadPath, $config, $request)) {
