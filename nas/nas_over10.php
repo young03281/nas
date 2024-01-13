@@ -18,7 +18,7 @@
 
     <?php
     
-    $files = scandir("../../uploadstemp/uploads/");
+    $files = scandir("../../uploads&temp/uploads/");
      echo "<b>nas上有:</b>";
     for ($a = 2; $a < count($files); $a++)
     {

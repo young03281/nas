@@ -97,7 +97,7 @@
     <a href='logout.php' >登出</a></br>
     
     <?php
-    $path = "../../uploadstemp/uploads";
+    $path = "../../uploads&temp/uploads";
     $files = scandir($path);
      echo "<font size='5'><b>nas上有:</b></font>";
     for ($a = 2; $a < count($files); $a++)

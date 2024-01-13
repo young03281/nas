@@ -113,7 +113,7 @@
 
 
     <?php
-    $path = "../../uploadstemp/uploads";
+    $path = "../../uploads&temp/uploads";
     $files = scandir("$path");
      echo "<b>nas上有:</b>";
     for ($a = 2; $a < count($files); $a++)
