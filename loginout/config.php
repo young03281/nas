@@ -1,7 +1,7 @@
 <?php
 define('DB_SERVER', 'mysql:mysql.young922.com');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '11220328');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'nas');
 
 
