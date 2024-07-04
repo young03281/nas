@@ -13,7 +13,7 @@ if (!$cc){
 }
 
 if ($c ->query("CREATE DATABASE IF NOT EXISTS nas")){
-    $cf = new PDO("mysql:resolveSrv:true;host=_mysql._tcp.mysql.young922.com;dbname=nas", DB_USERNAME, DB_PASSWORD);
+    $cf = new PDO(DB_SERVER, DB_USERNAME, DB_PASSWORD);
     if (!$cf) {
         die('Could not connect: ' . $c->errorInfo());
     }
