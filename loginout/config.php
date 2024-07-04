@@ -1,5 +1,5 @@
 <?php
-define('DB_SERVER', 'mysql:mysql.young922.com');
+define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'nas');
