@@ -31,12 +31,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             function_alert("帳號或密碼錯誤"); 
         }
 }
-    else{
-        function_alert("Something wrong"); 
-    }
+else{
+    function_alert("Something wrong"); 
+}
 
-    // Close connection
-    mysqli_close($link);
+$conn = null;
 
 function function_alert($message) { 
       

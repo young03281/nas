@@ -99,7 +99,7 @@
     <?php
     $path = "../../uploads&temp/uploads";
     $files = scandir($path);
-     echo "<font size='5'><b>nas上有:</b></font>";
+    echo "<font size='5'><b>nas上有:</b></font>";
     for ($a = 2; $a < count($files); $a++)
     {
         ?>
@@ -110,12 +110,12 @@
             <!-- href should be complete file path !-->
             <!-- download attribute should be the name after it downloads !-->
             
-              <a href="download.php?path=<?php echo $path ?>/<?php echo $files[$a]; ?>">
-                Download
-              </a>
-              <a href="delete.php?name=<?php echo $path ?>/<?php echo $files[$a]; ?>", t -= 1 style="color: red;" >
-                Delete
-              </a>
+            <a href="download.php?path=<?php echo urlencode($path) . '/' . urlencode($files[$a]); ?>">
+              Download
+            </a>
+            <a href="delete.php?name=<?php echo urlencode($path) . '/' . urlencode($files[$a]); ?>", t -= 1 style="color: red;" >
+              Delete
+            </a>
             
             
         </p>

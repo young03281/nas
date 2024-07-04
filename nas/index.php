@@ -121,13 +121,18 @@
         ?>
         <p>
             <?php echo '</b>'.substr($files[$a], 13).'</b>'; ?>
-            <a href="download.php?path=<?php echo $path ?>/<?php echo $files[$a]; ?>">
+            <a href="download.php?path=<?php echo urlencode($path) . '/' . urlencode($files[$a]); ?>">
             Download
             </a>
         </p>
         <?php
     }
     ?>
+
+    <video width="320" height="240" autoplay controls>
+      <source src="./B.mp4" type="video/mp4">
+    </video>
+
     </body>
 
 </html>

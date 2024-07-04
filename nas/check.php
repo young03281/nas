@@ -18,14 +18,14 @@ if ($t != $x){
     if($t >= 10){
         header("location:./nas_over10.php", true);
     }else{
-        header("location:./nas_guest.php", true);
+        header("location:./index.php", true);
     }
 }else{
     if($t >= 10){
         header("location:./nas_over10.php", true);
     }
     $_SESSION["file_num"] = $t;
-    header("location:./nas_guest.php", true);
+    header("location:./index.php", true);
 }
 
 ?>
