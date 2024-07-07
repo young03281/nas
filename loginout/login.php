@@ -21,10 +21,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Store data in session variables
         $_SESSION["loggedin"] = true;
         //這些是之後可以用到的變數
+        if($row["id"] == NULL){
+            do{
+                $rand = rand();
+                $sql = "SELECT * FROM users WHERE id = '". $rand ."'";
+                $result = $conn->query($sql);
+            }while($result->rowCount());
+            $sql = "UPDATE users set id = ". $rand ." WHERE username = '".$username."'";
+            $result = $conn->query($sql);
+            $row["id"] = $rand;
+        }
         $_SESSION["id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
         $_SESSION["file_num"] = $row["file_num"];
-       $conn->query($ip);
+        $conn->query($ip);
         header("location: ../index.php");
     }
     else{

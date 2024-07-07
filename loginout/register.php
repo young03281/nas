@@ -8,8 +8,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $check="SELECT * FROM users WHERE username='".$username."'";
     $result = $conn ->query($check);
     if($result ->rowCount()==0){
+        do{
+            $rand = rand();
+            $check = "SELECT * FROM users WHERE id='".$rand."'";
+            $result = $conn ->query($check);
+        }while($result ->rowCount());
         $sql="INSERT INTO users (id,username, password,file_num)
-            VALUES(NULL,'".$username."','".$password."', 0)";
+            VALUES('". $rand ."','".$username."','".$password."', 0)";
         
         if($conn ->query($sql)){
             echo "註冊成功!3秒後將自動跳轉頁面<br>";

@@ -129,7 +129,12 @@
     }
     ?>
 
-    <video width="320" height="240" autoplay controls>
+    <video width="320" height="240" autoplay="true" muted="true">
+        <script>
+          var video = document.currentScript.parentElement;
+          video.volume = 0.1;
+          video.play();
+        </script>
       <source src="./B.mp4" type="video/mp4">
     </video>
 

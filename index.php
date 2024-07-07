@@ -6,8 +6,7 @@ session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     
     if($_SESSION["id"] == "1"){header("location: ./nas/nas_admin.php");}
-    else{header("location: ./nas/");}
-    exit;
+    else{if($_SESSION["username"] != null)header("location: ./nas/");}
 }
 ?>
 <html>
