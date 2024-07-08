@@ -3,22 +3,16 @@
 <?php 
   session_start();
   $username=$_SESSION["username"];
-  $_SESSION["username"]=$username;
   if ($username == null){
     echo "<script>alert('還敢偷來啊冰鳥');
       window.location.href='../';
      </script>"; 
   }
   $id=$_SESSION["id"];
-  $_SESSION["id"]=$id;
   $t=$_SESSION["file_num"];
-  $_SESSION["file_num"]=$t;
   $conn=require_once "../loginout/config.php";
   $sql_file="UPDATE users SET file_num='".$t."' WHERE username='".$username."'";
   $conn ->query($sql_file);
-  if($t >= 10){
-    header("Location:./nas_over10.php?file_num=".$_SESSION["file_num"]);
-  }
 ?>
 
   <head>
@@ -33,8 +27,9 @@
     
     
 
-    <input type="button" id="upbrowse" style="height:50px; width:100px" value="選擇上傳檔案"/>
+    <?php if($t < 10 || $id == 1) echo "<input type=\"button\" id=\"upbrowse\" style=\"height:50px; width:100px\" value=\"選擇上傳檔案\"/>"; ?>
     <input type="button" id="upToggle" style="height:50px; width:100px" value="暫停/開始"/>
+    <?php if($id == 1) echo "<input type=\"button\" id=\"clean_temp\" style=\"height:50px; width:100px\" value=\"clean temp\" onclick=\"javascript:window.location.href='delete_temp.php'\"/>"; ?>
     <div id="uplist"></div>
     
     <!-- (B) LOAD FLOWJS -->
@@ -49,7 +44,7 @@
       // (C1) NEW FLOW OBJECT
       var flow = new Flow({
         target: "upload_chunk_resumable.php",
-        chunkSize: 1024*512, // 1MB
+        chunkSize: 1024*1024, // 1MB
         singleFile: false
       });
 
@@ -115,9 +110,41 @@
     <?php
     $path = "../../uploads&temp/uploads";
     $files = scandir("$path");
-     echo "<b>nas上有:</b>";
+    echo "<b>nas上有:</b>";
+    $sql = "SELECT * FROM files WHERE f_name = '";
     for ($a = 2; $a < count($files); $a++)
     {
+      $result = $conn->query($sql.$files[$a]."'");
+      $row = $result->fetch(PDO::FETCH_ASSOC);
+      if($row["userid"] == $id || $id == 1){
+        ?>
+        <p>
+            <?php echo '<b>'.substr($files[$a], 13).'</b>'; ?>
+            <a href="download.php?path=<?php echo urlencode($path) . '/' . urlencode($files[$a]); ?>">
+            Download
+            </a>
+            <a href="delete.php?path=<?php echo urlencode($path) . '/' . urlencode($files[$a]); ?>&id=<?php echo $row["id"];?>", style="color: red;" >
+              Delete
+            </a>
+            <?php 
+            if($id == 1) {
+              echo $row["id"];
+              $sql = "SELECT username FROM users WHERE id = '".$row["userid"]."'";
+              $result = $conn->query($sql);
+              $row = $result->fetch();
+              echo " - ".$row["username"];
+            }
+            ?>
+        </p>
+        <?php
+      }
+    }
+    
+    for ($a = 2; $a < count($files); $a++)
+    {
+      $result = $conn->query($sql.$files[$a]."'");
+      $row = $result->fetch();
+      if($row["userid"] != $id && $id != 1){
         ?>
         <p>
             <?php echo '</b>'.substr($files[$a], 13).'</b>'; ?>
@@ -126,17 +153,9 @@
             </a>
         </p>
         <?php
+      }
     }
     ?>
-
-    <video width="320" height="240" autoplay="true" muted="true">
-        <script>
-          var video = document.currentScript.parentElement;
-          video.volume = 0.1;
-          video.play();
-        </script>
-      <source src="./B.mp4" type="video/mp4">
-    </video>
 
     </body>
 

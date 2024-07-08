@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $sql = "SELECT * FROM users WHERE id = '". $rand ."'";
                 $result = $conn->query($sql);
             }while($result->rowCount());
-            $sql = "UPDATE users set id = ". $rand ." WHERE username = '".$username."'";
+            $sql = "UPDATE users set id = '". $rand ."' WHERE username = '".$username."'";
             $result = $conn->query($sql);
             $row["id"] = $rand;
         }

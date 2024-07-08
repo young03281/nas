@@ -13,19 +13,6 @@ if ($t != $x){
     $sql_file="UPDATE users SET file_num='".$t."' WHERE username='".$username."'";
     $conn->query($sql_file);
     $_SESSION["file_num"] = $t;
-    echo $t;
-    echo $_SESSION["file_num"];
-    if($t >= 10){
-        header("location:./nas_over10.php", true);
-    }else{
-        header("location:./index.php", true);
-    }
-}else{
-    if($t >= 10){
-        header("location:./nas_over10.php", true);
-    }
-    $_SESSION["file_num"] = $t;
     header("location:./index.php", true);
 }
-
 ?>
