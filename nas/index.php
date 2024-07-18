@@ -114,6 +114,7 @@
     $sql = "SELECT * FROM files WHERE f_name = '";
     for ($a = 2; $a < count($files); $a++)
     {
+      $sql = "SELECT * FROM files WHERE f_name = '";
       $result = $conn->query($sql.$files[$a]."'");
       $row = $result->fetch(PDO::FETCH_ASSOC);
       if($row["userid"] == $id || $id == 1){
@@ -128,10 +129,9 @@
             </a>
             <?php 
             if($id == 1) {
-              echo $row["id"];
               $sql = "SELECT username FROM users WHERE id = '".$row["userid"]."'";
               $result = $conn->query($sql);
-              $row = $result->fetch();
+              $row = $result->fetch(PDO::FETCH_ASSOC);
               echo " - ".$row["username"];
             }
             ?>
@@ -139,11 +139,13 @@
         <?php
       }
     }
+
+    $sql = "SELECT * FROM files WHERE f_name = '";
     
     for ($a = 2; $a < count($files); $a++)
     {
       $result = $conn->query($sql.$files[$a]."'");
-      $row = $result->fetch();
+      $row = $result->fetch(PDO::FETCH_ASSOC);
       if($row["userid"] != $id && $id != 1){
         ?>
         <p>
