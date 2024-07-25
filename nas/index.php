@@ -108,7 +108,7 @@
 
 
     <?php
-    $path = "../../uploads&temp/uploads";
+    $path = "../../uploads";
     $files = scandir("$path");
     echo "<b>nas上有:</b>";
     $sql = "SELECT * FROM files WHERE f_name = '";

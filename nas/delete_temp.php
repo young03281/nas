@@ -1,5 +1,5 @@
 <?php 
-    $dir = "C:\\Users\\young\\Desktop\\code\\uploads&temp\\temp";
+    $dir = "../../temp";
     foreach(glob($dir.'/*') as $v){
         unlink($v);
     }

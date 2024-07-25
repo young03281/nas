@@ -5,11 +5,11 @@ $conn = require_once "../loginout/config.php";
 session_start();
 $id = $_SESSION["id"];
 $config = new \Flow\Config();
-$config->setTempDir("C:\\Users\\young\\Desktop\\code\\\uploads&temp" . DIRECTORY_SEPARATOR . "temp");
+$config->setTempDir("../.." . DIRECTORY_SEPARATOR . "temp");
 $request = new \Flow\Request();
 
 // (B) HANDLE UPLOAD
-$uploadFolder = "C:\\Users\\young\\Desktop\\code\\uploads&temp" . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
+$uploadFolder = "../.." . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR;
 $uploadFileName = uniqid() . $request->getFileName();
 $uploadPath = $uploadFolder . $uploadFileName;
 if (\Flow\Basic::save($uploadPath, $config, $request)) {
